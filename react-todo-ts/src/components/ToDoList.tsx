@@ -1,13 +1,23 @@
 import React from 'react'
+import {TodoListInterface} from "../interface/Interface";
+import {ToDoItem} from "./ToDoItem";
 
-interface Props {
-
-}
-
-export const ToDoList: React.FC<Props> = () => {
+export const ToDoList: React.FC<TodoListInterface> = (props) => {
     return (
-        <div>
+        <div className="todo-list">
+ <ul>
+    {props.todos.map((todo) => (
+            <li key={todo.id}>
+                <ToDoItem
+                    todos={todo}
+                    handleTodoUpdate={props.handleTodoUpdate}
+                    handleTodoRemove={props.handleTodoRemove}
+                    handleTodoComplete={props.handleTodoComplete}
 
-        </div>
-    )
+                />
+            </li>
+        ))}
+</ul>
+</div>
+)
 }
